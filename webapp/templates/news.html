@@ -6,8 +6,7 @@
         <div class="row">
             <div class="col-12">
                 <h2>{{ title }}</h2>
-                <code>TODO: Сделать нормальную адресацию на внутреннюю страницу</code><br>
-                <code>TODO: Закрыть внутреннюю страницу новости на авторизацию /news_post?news_id=1</code><br>
+                <code>TODO: Закрыть внутреннюю страницу новости на авторизацию /news_post/1</code><br>
                 <code>TODO: Доступ к странице только авторизованным USER.</code><br>
                 <code>TODO: Проверить что неавторизованных и ADMIN выбрасывает на авторизацию</code><br>
                 <code>TODO: Если новостей в БД нет, то выводить текст что нет новостей</code><br>
@@ -15,7 +14,7 @@
                 <ul class="list-unstyled ps-0">
                     {% for news in all_news %}
                         <li>
-                            <a class="mb-1" href="{{ url_for('news_post', news_id=news.id) }}">{{ news.zag }}</a>
+                            <a class="mb-1" href="{{ url_for('news_post', id=news.id) }}">{{ news.zag }}</a>
                         </li>
                     {% endfor %}
                 </ul>

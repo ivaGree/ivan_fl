@@ -89,13 +89,12 @@ def news():
     )
 
 
-@app.route('/news_post')
-def news_post():
-    news_id = int(request.args['news_id'])
-    my_news = News.query.get(news_id)
+@app.route('/news_post/<int:id>')
+def news_post(id):
+    news = News.query.get(id)
     return render_template(
         'news_post.html',
-        news=my_news,
+        news=news,
     )
 
 
