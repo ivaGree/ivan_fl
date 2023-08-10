@@ -3,7 +3,7 @@ import os
 
 basedir = os.path.dirname(__file__)
 
-SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.abspath(os.path.join(basedir, 'webapp.db'))
+SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.abspath(os.path.join(basedir, '..', 'webapp.db'))
 
 # TODO тут точно нужен LOGIN_MESSAGE ?
 LOGIN_MESSAGE = 'Вам доступ запрещен!'

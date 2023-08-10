@@ -3,12 +3,14 @@ from db import db, User, News
 from forms import LoginForm, RegForm, NewsAddForm
 from flask import Flask, flash, redirect, render_template, request, url_for
 from flask_login import LoginManager, current_user, login_user, logout_user, login_required
+from flask_migrate import Migrate
 
 app = Flask(__name__)
 # Подключим конфиги
 app.config.from_pyfile('config.py')
 # Подключаем БД к приложению
 db.init_app(app)
+migrate = Migrate(app, db)
 
 login_manager = LoginManager()
 login_manager.init_app(app)
