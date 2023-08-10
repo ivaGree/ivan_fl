@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-12">
+                <h2>{{ title }}</h2>
+                <code>TODO: Доступ к странице только авторизованным АДМИНАМ</code><br>
+                <code>TODO: Проверить что неавторизованных и USER выбрасывает на авторизацию</code><br>
+                <code>TODO: Неавторизованного пользователя перебрасывает на авторизацию, а если зайти по урлу
+                    авторизованному USER - не перебрасывает</code><br>
+                <code>TODO: Записывать в базу тип пользователя</code><br>
+                <code>TODO: После добавления очищать форму</code>
+                <form class="col-3" action="{{ url_for('users_add') }}" method="post">
+                    {{ form.hidden_tag() }}
+                    <div class="form-group">
+                        {{ form.email.label }}<br>{{ form.email() }}
+                    </div>
+                    <div class="form-group">
+                        {{ form.username.label }}<br>{{ form.username() }}
+                    </div>
+                    <div class="form-group">
+                        {{ form.password.label }}<br>{{ form.password() }}
+                    </div>
+                    <div class="form-group">
+                        {{ form.password2.label }}<br>{{ form.password2() }}
+                    </div>
+                    <div class="form-group">
+                        <fieldset>
+                            <legend>Тип пользователя:</legend>
+
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="status" id="user" value="user"
+                                       checked="">
+                                <label class="form-check-label" for="user">User</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="status" id="admin" value="admin">
+                                <label class="form-check-label" for="admin">Admin</label>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <p></p>
+                    {{ form.submit }}
+                </form>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

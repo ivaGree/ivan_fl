@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-12">
+                <h2>{{ title }}</h2>
+                <code>TODO: Доступ к странице только авторизованным АДМИНАМ.</code><br>
+                <code>TODO: Проверить что неавторизованных и USER выбрасывает на авторизацию</code><br>
+                <code>TODO: Неавторизованного пользователя перебрасывает на авторизацию, а если зайти по урлу авторизованному USER - не перебрасывает</code>
+
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">ФИО</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Тип</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for user in users %}
+                        <tr>
+                            <th scope="row">{{ loop.index }}</th>
+                            <td>{{ user.username }}</td>
+                            <td>{{ user.email }}</td>
+                            <td>{{ user.status }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

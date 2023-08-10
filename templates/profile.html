@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-12">
+                <h2>{{ title }}</h2>
+                <code>TODO: Доступ к странице только авторизованным пользователям и USER и ADMIN</code><br>
+                <code>TODO: После авторизации всех перебрасываем сюда</code>
+                <p>Вы зашли как <strong>{{ current_user.status }}</strong></p>
+                <ul>
+                    <li>
+                        ФИО: {{ current_user.username }}
+                    </li>
+                    <li>
+                        Email: {{ current_user.email }}
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

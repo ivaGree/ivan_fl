@@ -1,0 +1,48 @@
+{% extends 'base_full.html' %}
+
+{% block content %}
+
+    <main class="form-auth w-100 m-auto">
+        <form action="{{ url_for('auth') }}" method="post">
+            {{ form.hidden_tag() }}
+            <h1 class="h3 mb-3 fw-normal">{{ title }}</h1>
+
+
+            <div class="form-floating">
+                {{ form.email() }} {{ form.email.label }}
+            </div>
+
+            <div class="form-floating">
+                {{ form.password() }} {{ form.password.label }}
+            </div>
+
+            <div class="form-check text-start my-3">
+
+                {{ form.remember_me() }} {{ form.remember_me.label }}
+            </div>
+
+            {{ form.submit }}
+            <p class="mt-3 mb-3 text-body-secondary">Company &copy; 2023</p>
+        </form>
+
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% if 'Ошибка!' in messages[0] %}
+                    <div class="alert alert-danger" role="alert">
+                        {% for m in messages %}
+                            {{ m }}<br>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    <div class="alert alert-success" role="alert">
+                        {% for m in messages %}
+                            {{ m }}<br>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            {% endif %}
+        {% endwith %}
+
+    </main>
+
+{% endblock %}
