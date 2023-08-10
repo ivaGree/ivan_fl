@@ -28,6 +28,7 @@ user = ['admin@admin.ru', 'Иванов',
 
 # Создание БД при первичном запуске '/webapp.db', таблицы которой описаны в 'db.py'
 with app.app_context():
+    # TODO а где задается название создаваемых таблиц БД?
     db.create_all()
     check_user = User.query.filter(User.email == user[0]).count()
     # Для теста -----------

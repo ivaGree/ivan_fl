@@ -9,7 +9,7 @@
                 <code>TODO: Доступ к странице только авторизованным USER.</code><br>
                 <code>TODO: Проверить что неавторизованных и ADMIN выбрасывает на авторизацию</code><br>
                 <code>TODO: Текст новости сделать textarea</code><br>
-                <code>TODO: После добавления очищать форму</code><br>
+                <code>TODO: После добавления очищать/сбрасывать форму. Иначе при повторных кликах дублируются записи в БД</code><br>
                 <form class="col-3" action="{{ url_for('news_add') }}" method="post">
                     {{ form.hidden_tag() }}
                     <div class="form-group">

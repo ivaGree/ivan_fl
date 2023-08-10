@@ -3,6 +3,7 @@
 from flask_login import UserMixin
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import check_password_hash, generate_password_hash
+from datetime import datetime
 
 # создаем пустую БД
 db = SQLAlchemy()
@@ -30,3 +31,4 @@ class News(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     zag = db.Column(db.String, nullable=False)
     description = db.Column(db.String, nullable=False)
+    published_at = db.Column(db.DateTime, default=datetime.now)
