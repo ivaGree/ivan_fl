@@ -108,6 +108,7 @@ def news_del(id):
         db.session.commit()
         # TODO наверное костыль? но так не работает - return redirect(url_for('news'))
         return redirect('/news')
+    # TODO почему ругается на except? хотя код работает
     except:
         flash('Ошибка! При удалении статьи')
 
@@ -133,7 +134,7 @@ def news_add():
 
 
 @app.errorhandler(404)
-def pageNotFound(error):
+def page_404(error):
     title = 'Ошибка 404'
     return render_template('404.html', title=title)
 
