@@ -1,6 +1,6 @@
 from db import User
 from flask_wtf import FlaskForm
-from wtforms import BooleanField, StringField, PasswordField, SubmitField
+from wtforms import BooleanField, StringField, PasswordField, SubmitField, TextAreaField
 from wtforms.validators import DataRequired, EqualTo, Email, ValidationError
 
 
@@ -68,7 +68,7 @@ class NewsAddForm(FlaskForm):
         validators=[DataRequired()],
         render_kw={'class': 'form-control'},
     )
-    description = StringField(
+    description = TextAreaField(
         'Текст новости: ',
         render_kw={'class': 'form-control'},
     )

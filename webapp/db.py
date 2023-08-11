@@ -31,4 +31,4 @@ class News(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     zag = db.Column(db.String, nullable=False)
     description = db.Column(db.String, nullable=False)
-    published_at = db.Column(db.DateTime, default=datetime.now)
+    published_at = db.Column(db.DateTime, default=datetime.utcnow)

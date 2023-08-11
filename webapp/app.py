@@ -81,7 +81,7 @@ def news():
     if not current_user.is_authenticated:
         flash('Ошибка! Доступ запрещен!')
         return redirect('/auth')
-    all_news = News.query.all()
+    all_news = News.query.order_by(News.published_at.desc()).all()
     return render_template(
         'news.html',
         all_news=all_news,
@@ -91,11 +91,25 @@ def news():
 
 @app.route('/news_post/<int:id>')
 def news_post(id):
+    # LegacyAPIWarning: The Query.get() method is considered legacy as of the 1.x series of SQLAlchemy and becomes a legacy construct in 2.0.
+    # TODO как передать в title - Заголовок новости? News.zag
     news = News.query.get(id)
     return render_template(
         'news_post.html',
         news=news,
     )
+
+
+@app.route('/news_post/<int:id>/del')
+def news_del(id):
+    news = News.query.get_or_404(id)
+    try:
+        db.session.delete(news)
+        db.session.commit()
+        # TODO наверное костыль? но так не работает - return redirect(url_for('news'))
+        return redirect('/news')
+    except:
+        flash('Ошибка! При удалении статьи')
 
 
 @app.route('/news_add', methods=['GET', 'POST'])
